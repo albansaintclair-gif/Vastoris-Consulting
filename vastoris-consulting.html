@@ -777,55 +777,6 @@
       img.src = LOGO_B64;
     });
 
-    // ── GESTION DE L'ÉDITION EN LIGNE ─────────────────────
-    let initialContent = {};
-
-    function toggleEdit() {
-      const isEditing = document.body.classList.toggle('edit-mode');
-      const editableEls = document.querySelectorAll('[contenteditable]');
-
-      document.getElementById('btn-save').style.display = isEditing ? 'block' : 'none';
-      document.getElementById('btn-cancel').style.display = isEditing ? 'block' : 'none';
-      document.getElementById('edit-hint').style.display = isEditing ? 'block' : 'none';
-      document.getElementById('btn-edit').textContent = isEditing ? 'Mode Édition Actif' : '✎ Modifier la page';
-
-      editableEls.forEach((el, index) => {
-        el.contentEditable = isEditing;
-        if (isEditing && !initialContent[index]) {
-          initialContent[index] = el.innerHTML;
-        }
-      });
-    }
-
-    function saveContent() {
-      const editableEls = document.querySelectorAll('[contenteditable]');
-      editableEls.forEach((el, index) => {
-        localStorage.setItem('editable_content_' + index, el.innerHTML);
-      });
-      alert('Changements sauvegardés dans votre navigateur !');
-      toggleEdit();
-    }
-
-    function cancelEdit() {
-      const editableEls = document.querySelectorAll('[contenteditable]');
-      editableEls.forEach((el, index) => {
-        if (initialContent[index] !== undefined) {
-          el.innerHTML = initialContent[index];
-        }
-      });
-      toggleEdit();
-    }
-
-    // Charger les modifications sauvegardées
-    window.addEventListener('DOMContentLoaded', () => {
-      const editableEls = document.querySelectorAll('[contenteditable]');
-      editableEls.forEach((el, index) => {
-        const saved = localStorage.getItem('editable_content_' + index);
-        if (saved) el.innerHTML = saved;
-      });
-    });
-
-
     // ── FORMULAIRE ─────────────────────────────────────────
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
