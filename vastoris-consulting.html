@@ -45,71 +45,6 @@
       overflow-x: hidden;
     }
 
-    /* ── EDIT MODE ─────────────────────────────── */
-    body.edit-mode [contenteditable] {
-      outline: 1px dashed rgba(201,168,76,0.5);
-      cursor: text;
-      border-radius: 2px;
-      min-height: 1em;
-      padding: 2px 4px;
-      transition: outline 0.2s;
-    }
-    body.edit-mode [contenteditable]:hover { outline: 1px dashed var(--or); background: rgba(201,168,76,0.04); }
-    body.edit-mode [contenteditable]:focus { outline: 2px solid var(--or); background: rgba(201,168,76,0.07); }
-
-    /* Edit toolbar */
-    #edit-toolbar {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-end;
-    }
-    #edit-toolbar button {
-      border: none;
-      cursor: pointer;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.2rem;
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-    #btn-edit {
-      background: var(--or);
-      color: var(--noir);
-    }
-    #btn-edit:hover { background: var(--or-clair); }
-    #btn-save {
-      background: #2a7a4a;
-      color: #fff;
-      display: none;
-    }
-    #btn-save:hover { background: #3a9a5a; }
-    #btn-cancel {
-      background: transparent;
-      color: var(--texte-muted);
-      border: 1px solid var(--gris) !important;
-      display: none;
-    }
-    #btn-cancel:hover { color: var(--texte); }
-    #edit-hint {
-      background: rgba(10,10,10,0.9);
-      border: 1px solid var(--gris);
-      color: var(--texte-muted);
-      font-size: 0.72rem;
-      padding: 0.5rem 0.8rem;
-      border-radius: 2px;
-      max-width: 220px;
-      text-align: right;
-      display: none;
-    }
-
     /* ── HEADER ──────────────────────────────── */
     header {
       position: fixed;
@@ -636,27 +571,6 @@
 </head>
 <body>
 
-  <!-- TOOLBAR D'ÉDITION -->
-  </div>
-
-  <header>
-    <nav>
-      <a href="#hero" class="logo-nav">
-        <img src="LOGO_PLACEHOLDER" alt="Logo Vastoris Consulting">
-        <div>
-          <span>Vastoris</span>
-          <span class="sub">Consulting</span>
-        </div>
-      </a>
-      <ul class="menu">
-        <li><a href="#presentation">Expertise</a></li>
-        <li><a href="#dirigeant">Dirigeant</a></li>
-        <li><a href="#temoignages">Témoignages</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
@@ -911,18 +825,6 @@
       });
     });
 
-    // ── REVEAL ON SCROLL ───────────────────────────────────
-    const reveals = document.querySelectorAll('.reveal');
-    function checkReveal() {
-      reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          el.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', checkReveal);
-    checkReveal();
 
     // ── FORMULAIRE ─────────────────────────────────────────
     document.getElementById('contactForm').addEventListener('submit', function(e) {
