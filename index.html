@@ -38,70 +38,7 @@
       overflow-x: hidden;
     }
 
-    /* ── EDIT MODE ─────────────────────────────── */
-    body.edit-mode [contenteditable] {
-      outline: 1px dashed rgba(201,168,76,0.5);
-      cursor: text;
-      border-radius: 2px;
-      min-height: 1em;
-      padding: 2px 4px;
-      transition: outline 0.2s;
-    }
-    body.edit-mode [contenteditable]:hover { outline: 1px dashed var(--or); background: rgba(201,168,76,0.04); }
-    body.edit-mode [contenteditable]:focus { outline: 2px solid var(--or); background: rgba(201,168,76,0.07); }
 
-    /* Edit toolbar */
-    #edit-toolbar {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-end;
-    }
-    #edit-toolbar button {
-      border: none;
-      cursor: pointer;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.6rem 1.2rem;
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-    #btn-edit {
-      background: var(--or);
-      color: var(--noir);
-    }
-    #btn-edit:hover { background: var(--or-clair); }
-    #btn-save {
-      background: #2a7a4a;
-      color: #fff;
-      display: none;
-    }
-    #btn-save:hover { background: #3a9a5a; }
-    #btn-cancel {
-      background: transparent;
-      color: var(--texte-muted);
-      border: 1px solid var(--gris) !important;
-      display: none;
-    }
-    #btn-cancel:hover { color: var(--texte); }
-    #edit-hint {
-      background: rgba(10,10,10,0.9);
-      border: 1px solid var(--gris);
-      color: var(--texte-muted);
-      font-size: 0.72rem;
-      padding: 0.5rem 0.8rem;
-      border-radius: 2px;
-      max-width: 220px;
-      text-align: right;
-      display: none;
-    }
 
     /* ── HEADER ──────────────────────────────── */
     header {
@@ -194,13 +131,7 @@
         radial-gradient(ellipse 60% 80% at 50% 120%, rgba(201,168,76,0.07) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 80% 20%, rgba(201,168,76,0.04) 0%, transparent 60%);
     }
-    .hero-line {
-      position: absolute;
-      top: 0; left: 50%;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.15), transparent);
-    }
+
     .hero-content {
       position: relative;
       text-align: center;
@@ -266,32 +197,7 @@
       background: var(--or);
       color: var(--noir);
     }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--texte-muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      animation: fadeUp 1s 0.6s ease both;
-    }
-    .scroll-indicator::after {
-      content: '';
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--or), transparent);
-      animation: scrollPulse 2s infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
+
 
     /* ── SECTIONS COMMUNES ─────────────────── */
     section { padding: 7rem 2rem; }
@@ -636,13 +542,7 @@
 </head>
 <body>
 
-  <!-- TOOLBAR D'ÉDITION -->
-  <div id="edit-toolbar">
-    <div id="edit-hint">Cliquez sur n'importe quel texte pour le modifier. Utilisez Sauvegarder pour conserver vos changements.</div>
-    <button id="btn-cancel" onclick="cancelEdit()">✕ Annuler</button>
-    <button id="btn-save" onclick="saveContent()">✓ Sauvegarder</button>
-    <button id="btn-edit" onclick="toggleEdit()">✎ Modifier la page</button>
-  </div>
+
 
   <header>
     <nav>
@@ -665,7 +565,7 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
-    <div class="hero-line"></div>
+
     <div class="hero-content">
       <img class="hero-logo" src="LOGO_PLACEHOLDER" alt="Vastoris Consulting">
       <p class="hero-eyebrow" contenteditable="false">Cabinet de conseil · Paris</p>
@@ -675,7 +575,7 @@
       <p class="hero-subtitle" contenteditable="false">Nous accompagnons les entreprises ambitieuses vers une performance commerciale durable et différenciante.</p>
       <a href="#contact" class="hero-cta">Prendre contact</a>
     </div>
-    <div class="scroll-indicator">Découvrir</div>
+
   </section>
 
   <!-- PRÉSENTATION -->
@@ -890,55 +790,7 @@
       }, 1200);
     });
 
-    // ── ÉDITION INLINE ─────────────────────────────────────
-    let editMode = false;
-    let savedContent = {};
 
-    function toggleEdit() {
-      editMode = true;
-      // Sauvegarder l'état initial
-      document.querySelectorAll('[contenteditable]').forEach((el, i) => {
-        savedContent[i] = el.innerHTML;
-        el.contentEditable = 'true';
-      });
-      document.body.classList.add('edit-mode');
-      document.getElementById('btn-edit').style.display = 'none';
-      document.getElementById('btn-save').style.display = 'inline-block';
-      document.getElementById('btn-cancel').style.display = 'inline-block';
-      document.getElementById('edit-hint').style.display = 'block';
-    }
-
-    function exitEditMode() {
-      editMode = false;
-      document.querySelectorAll('[contenteditable]').forEach(el => el.contentEditable = 'false');
-      document.body.classList.remove('edit-mode');
-      document.getElementById('btn-edit').style.display = 'inline-block';
-      document.getElementById('btn-save').style.display = 'none';
-      document.getElementById('btn-cancel').style.display = 'none';
-      document.getElementById('edit-hint').style.display = 'none';
-    }
-
-    function saveContent() {
-      // Collecter tout le HTML modifié et proposer le téléchargement
-      const fullHTML = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-      const blob = new Blob([fullHTML], { type: 'text/html' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'vastoris-consulting.html';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      exitEditMode();
-      savedContent = {};
-    }
-
-    function cancelEdit() {
-      // Restaurer le contenu original
-      document.querySelectorAll('[contenteditable]').forEach((el, i) => {
-        if (savedContent[i] !== undefined) el.innerHTML = savedContent[i];
-      });
-      exitEditMode();
-      savedContent = {};
-    }
   </script>
 </body>
 </html>
