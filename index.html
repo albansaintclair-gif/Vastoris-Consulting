@@ -9,32 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Vastoris Consulting",
-    "url": "https://www.vastorisconsulting.fr",
-    "description": "Cabinet de conseil en stratégie commerciale, prospection B2B et copywriting exécutif.",
-    "email": "contact@vastorisconsulting.fr"
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"Vastoris Consulting","url":"https://www.vastorisconsulting.fr","description":"Cabinet de conseil en stratégie commerciale et marketing B2B.","email":"contact@vastorisconsulting.fr"}
   </script>
 
   <style>
     :root {
-      --or:        #C9A84C;
-      --or-clair:  #E2C27D;
-      --or-fonce:  #9A7A30;
-      --noir:      #0A0A0A;
-      --noir-2:    #111111;
-      --noir-3:    #1A1A1A;
-      --gris:      #2A2A2A;
-      --texte:     #E8E4DC;
+      --or:          #C9A84C;
+      --or-clair:    #E2C27D;
+      --noir:        #0A0A0A;
+      --noir-2:      #111111;
+      --noir-3:      #1A1A1A;
+      --texte:       #E8E4DC;
       --texte-muted: #9A9488;
-      --blanc:     #F8F4EE;
+      --blanc:       #F8F4EE;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -45,7 +35,7 @@
       overflow-x: hidden;
     }
 
-    /* ── HEADER ──────────────────────────────── */
+    /* ── HEADER ── */
     header {
       position: fixed;
       width: 100%;
@@ -54,7 +44,6 @@
       background: rgba(10,10,10,0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(201,168,76,0.15);
-      transition: all 0.3s;
     }
     nav {
       display: flex;
@@ -119,7 +108,7 @@
     .menu a:hover { color: var(--or); }
     .menu a:hover::after { width: 100%; }
 
-    /* ── HERO ──────────────────────────────── */
+    /* ── HERO ── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -139,7 +128,7 @@
     .hero-content {
       position: relative;
       text-align: center;
-      padding: 2rem 2rem;
+      padding: 2rem;
       max-width: 900px;
       animation: fadeUp 1s ease both;
     }
@@ -170,15 +159,12 @@
       margin-bottom: 1.5rem;
       animation: fadeUp 1s 0.2s ease both;
     }
-    .hero-title em {
-      font-style: italic;
-      color: var(--or);
-    }
+    .hero-title em { font-style: italic; color: var(--or); }
     .hero-subtitle {
       font-size: 1rem;
       color: var(--texte-muted);
       font-weight: 300;
-      max-width: 620px;
+      max-width: 560px;
       margin: 0 auto 2.5rem;
       animation: fadeUp 1s 0.3s ease both;
     }
@@ -197,38 +183,9 @@
       transition: all 0.3s;
       animation: fadeUp 1s 0.4s ease both;
     }
-    .hero-cta:hover {
-      background: var(--or);
-      color: var(--noir);
-    }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--texte-muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      animation: fadeUp 1s 0.6s ease both;
-    }
-    .scroll-indicator::after {
-      content: '';
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--or), transparent);
-      animation: scrollPulse 2s infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
+    .hero-cta:hover { background: var(--or); color: var(--noir); }
 
-    /* ── SECTIONS COMMUNES ─────────────────── */
+    /* ── SECTIONS COMMUNES ── */
     section { padding: 7rem 2rem; }
     .section-inner { max-width: 1100px; margin: auto; }
     .section-label {
@@ -253,7 +210,16 @@
       margin: 1.5rem 0 3rem;
     }
 
-    /* ── PRÉSENTATION ─────────────────────── */
+    /* ── REVEAL : visible par défaut, animé si JS disponible ── */
+    .reveal { opacity: 1; transform: none; }
+    .js-ok .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js-ok .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── PRÉSENTATION ── */
     #presentation { background: var(--noir-2); }
     .services-grid {
       display: grid;
@@ -266,13 +232,9 @@
       background: var(--noir-2);
       padding: 2.5rem 2rem;
       transition: background 0.3s;
-      cursor: default;
     }
     .service-card:hover { background: var(--noir-3); }
-    .service-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
+    .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
     .service-card h3 {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.3rem;
@@ -308,7 +270,7 @@
       line-height: 1.6;
     }
 
-    /* ── DIRIGEANT ─────────────────────────── */
+    /* ── DIRIGEANT ── */
     #dirigeant { background: var(--noir); }
     .dirigeant-grid {
       display: grid;
@@ -316,9 +278,7 @@
       gap: 5rem;
       align-items: start;
     }
-    .dirigeant-photo {
-      position: relative;
-    }
+    .dirigeant-photo { position: relative; }
     .dirigeant-photo img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -352,12 +312,7 @@
       line-height: 1.85;
       margin-bottom: 1.5rem;
     }
-    .competences {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 2rem;
-    }
+    .competences { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
     .tag {
       border: 1px solid rgba(201,168,76,0.3);
       color: var(--or-clair);
@@ -367,7 +322,7 @@
       padding: 0.35rem 0.9rem;
     }
 
-    /* ── TÉMOIGNAGES ──────────────────────── */
+    /* ── TÉMOIGNAGES ── */
     #temoignages { background: var(--noir-3); }
     .temoignages-grid {
       display: grid;
@@ -400,14 +355,13 @@
       font-size: 0.85rem;
       color: var(--blanc);
       font-weight: 500;
-      letter-spacing: 0.05em;
     }
     .temoignage-author span {
       font-size: 0.75rem;
       color: var(--texte-muted);
     }
 
-    /* ── CONTACT ──────────────────────────── */
+    /* ── CONTACT ── */
     #contact { background: var(--noir-2); }
     .contact-grid {
       display: grid;
@@ -421,27 +375,15 @@
       line-height: 1.85;
       margin-bottom: 2rem;
     }
-    .contact-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .contact-detail-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
+    .contact-detail { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-detail-item { display: flex; flex-direction: column; gap: 0.2rem; }
     .contact-detail-item .label {
       font-size: 0.65rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--or);
     }
-    .contact-detail-item .value {
-      font-size: 0.9rem;
-      color: var(--texte);
-    }
+    .contact-detail-item .value { font-size: 0.9rem; color: var(--texte); }
 
     form { display: flex; flex-direction: column; gap: 1.2rem; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -466,23 +408,12 @@
     }
     input:focus, textarea:focus { border-color: var(--or); background: rgba(201,168,76,0.03); }
     textarea { resize: vertical; min-height: 130px; }
-    .checkbox-group {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-    }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 0.8rem; }
     input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      min-width: 16px;
-      accent-color: var(--or);
-      margin-top: 2px;
+      width: 16px; height: 16px; min-width: 16px;
+      accent-color: var(--or); margin-top: 2px;
     }
-    .checkbox-group label {
-      font-size: 0.8rem;
-      color: var(--texte-muted);
-      line-height: 1.5;
-    }
+    .checkbox-group label { font-size: 0.8rem; color: var(--texte-muted); line-height: 1.5; }
     .checkbox-group a { color: var(--or); text-decoration: none; }
     .btn-submit {
       background: transparent;
@@ -499,25 +430,17 @@
       align-self: flex-start;
     }
     .btn-submit:hover { background: var(--or); color: var(--noir); }
-    .rgpd-note {
-      font-size: 0.72rem;
-      color: #5a5650;
-      line-height: 1.6;
-    }
+    .rgpd-note { font-size: 0.72rem; color: #5a5650; line-height: 1.6; }
     .rgpd-note a { color: var(--texte-muted); }
 
-    /* ── FOOTER ───────────────────────────── */
+    /* ── FOOTER ── */
     footer {
       background: var(--noir);
       border-top: 1px solid rgba(201,168,76,0.1);
       padding: 3rem 2rem;
       text-align: center;
     }
-    .footer-logo {
-      height: 50px;
-      margin-bottom: 1.5rem;
-      opacity: 0.7;
-    }
+    .footer-logo { height: 50px; margin-bottom: 1.5rem; opacity: 0.7; }
     .footer-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1rem;
@@ -526,12 +449,7 @@
       color: var(--or);
       margin-bottom: 0.5rem;
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 1.5rem 0;
-    }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; }
     .footer-links a {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
@@ -541,12 +459,9 @@
       transition: color 0.2s;
     }
     .footer-links a:hover { color: var(--or); }
-    .footer-copy {
-      font-size: 0.72rem;
-      color: #3a3832;
-    }
+    .footer-copy { font-size: 0.72rem; color: #3a3832; }
 
-    /* ── RESPONSIVE ───────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0.9rem 1.5rem; }
       .menu { gap: 1.5rem; }
@@ -559,166 +474,221 @@
       .menu { display: none; }
       section { padding: 4rem 1.2rem; }
     }
-
-    /* ── REVEAL ANIMATION ─────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
+  <header>
+    <nav>
+      <a href="#hero" class="logo-nav">
+        <!-- ✏️ LOGO : placez votre fichier logo dans le même dossier que index.html et nommez-le LOGO.jpg -->
+        <img src="LOGO.jpg" alt="Logo Vastoris Consulting">
+        <div>
+          <span>Vastoris</span>
+          <span class="sub">Consulting</span>
+        </div>
+      </a>
+      <ul class="menu">
+        <li><a href="#presentation">Expertise</a></li>
+        <li><a href="#dirigeant">Dirigeant</a></li>
+        <li><a href="#temoignages">Témoignages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════ -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <img class="hero-logo" src="LOGO_PLACEHOLDER" alt="Vastoris Consulting">
-      <p class="hero-eyebrow" contenteditable="false">Cabinet de Conseil Stratégique · B2B</p>
-      <h1 class="hero-title" contenteditable="false">
-        Stratégie <em>commerciale</em><br>& Branding B2B
-      </h1>
-      <p class="hero-subtitle" contenteditable="false">Nous accompagnons les dirigeants et entreprises ambitieuses vers un positionnement d'autorité et une croissance commerciale pérenne.</p>
+      <!-- ✏️ LOGO HERO -->
+      <img class="hero-logo" src="LOGO.jpg" alt="Vastoris Consulting">
+      <!-- ✏️ Texte sous le logo -->
+      <p class="hero-eyebrow">Cabinet de Conseil Stratégique · B2B</p>
+      <!-- ✏️ Titre principal -->
+      <h1 class="hero-title">Stratégie <em>commerciale</em><br>&amp; Branding B2B</h1>
+      <!-- ✏️ Sous-titre -->
+      <p class="hero-subtitle">Nous accompagnons les dirigeants et entreprises ambitieuses vers un positionnement d'autorité et une croissance commerciale pérenne.</p>
+      <!-- ✏️ Bouton -->
       <a href="#contact" class="hero-cta">Prendre contact</a>
+    </div>
   </section>
 
-  <!-- PRÉSENTATION -->
+  <!-- ═══════════════════════════════════════════
+       PRÉSENTATION / SERVICES
+       ════════════════════════════════════════ -->
   <section id="presentation">
     <div class="section-inner">
       <div class="reveal">
+        <!-- ✏️ Label section -->
         <p class="section-label">Notre expertise</p>
-        <h2 class="section-title" contenteditable="false">Accompagnement stratégique,<br>résultats à haut impact</h2>
+        <!-- ✏️ Titre section -->
+        <h2 class="section-title">Accompagnement stratégique,<br>résultats à haut impact</h2>
         <div class="gold-rule"></div>
       </div>
+
       <div class="services-grid reveal">
+        <!-- ✏️ Carte service 1 -->
         <div class="service-card">
           <div class="service-icon">◈</div>
-          <h3 contenteditable="false">Stratégie B2B</h3>
-          <p contenteditable="false">Analyse fine de vos leviers de croissance, élaboration de plans de prospection stratégiques et optimisation du cycle de vente.</p>
+          <h3>Stratégie B2B</h3>
+          <p>Analyse fine de vos leviers de croissance, élaboration de plans de prospection stratégiques et optimisation du cycle de vente.</p>
         </div>
+        <!-- ✏️ Carte service 2 -->
         <div class="service-card">
           <div class="service-icon">◈</div>
-          <h3 contenteditable="false">Direction Commerciale</h3>
-          <p contenteditable="false">Pilotage stratégique, accompagnement à la négociation complexe et structuration des équipes de vente B2B : techniques de closing, écoute active, négociation B2B.</p>
+          <h3>Direction Commerciale</h3>
+          <p>Pilotage stratégique, accompagnement à la négociation complexe et structuration des équipes de vente B2B : techniques de closing, écoute active, négociation B2B.</p>
         </div>
+        <!-- ✏️ Carte service 3 -->
         <div class="service-card">
           <div class="service-icon">◈</div>
-          <h3 contenteditable="false">Executive Copywriting</h3>
-          <p contenteditable="false">Conception de campagnes d'acquisition et rédaction stratégique pour décideurs B2B afin d'engager vos cibles à haute valeur ajoutée.</p>
+          <h3>Executive Copywriting</h3>
+          <p>Conception de campagnes d'acquisition et rédaction stratégique pour décideurs B2B afin d'engager vos cibles à haute valeur ajoutée.</p>
         </div>
+        <!-- ✏️ Carte service 4 -->
         <div class="service-card">
           <div class="service-icon">◈</div>
-          <h3 contenteditable="false">Transformation digitale</h3>
-          <p contenteditable="false">Accompagnement de dirigeants dans l'adoption des outils digitaux pour asseoir leur autorité sectorielle et générer des opportunités rentables (Personal Branding).</p>
+          <h3>Transformation digitale</h3>
+          <p>Accompagnement de dirigeants dans l'adoption des outils digitaux pour asseoir leur autorité sectorielle et générer des opportunités rentables (Personal Branding).</p>
         </div>
       </div>
+
+      <!-- ✏️ Citation -->
       <div class="valeur-bloc reveal">
-        <p contenteditable="false">La pertinence de nos recommandations provient d'une écoute attentive et d'une veille constante des tendances du marché.</p>
+        <p>La pertinence de nos recommandations provient d'une écoute attentive et d'une veille constante des tendances du marché.</p>
       </div>
     </div>
   </section>
 
-  <!-- DIRIGEANT -->
+  <!-- ═══════════════════════════════════════════
+       DIRIGEANT
+       ════════════════════════════════════════ -->
   <section id="dirigeant">
     <div class="section-inner">
       <div class="reveal">
-        <p class="section-label">Direction & Leadership</p>
-        <h2 class="section-title" contenteditable="false">Le Dirigeant</h2>
+        <p class="section-label">Direction &amp; Leadership</p>
+        <!-- ✏️ Titre section -->
+        <h2 class="section-title">Le Dirigeant</h2>
         <div class="gold-rule"></div>
       </div>
       <div class="dirigeant-grid reveal">
         <div class="dirigeant-photo">
-          <img src="https://via.placeholder.com/280x373/1A1A1A/C9A84C?text=Alban+Saint-Clair" alt="Portrait d'Alban Saint-Clair">
+          <!-- ✏️ PHOTO : placez votre photo dans le même dossier et nommez-la photo-dirigeant.jpg -->
+          <img src="photo-dirigeant.jpg" alt="Portrait d'Alban Saint-Clair"
+               onerror="this.src='https://via.placeholder.com/280x373/1A1A1A/C9A84C?text=Photo'">
           <div class="photo-frame"></div>
         </div>
         <div>
-          <h3 class="dirigeant-name" contenteditable="false">Alban SAINT-CLAIR</h3>
-          <p class="dirigeant-title" contenteditable="false">Directeur commercial & stratège B2B</p>
-          <p class="dirigeant-bio" contenteditable="false">Fondateur de Vastoris Consulting, Alban cumule plus de quinze années d'expérience dans la négociation B2B, le marketing digital et la direction d'équipes commerciales. Œuvrant tant les secteurs nationaux qu'internationaux , il fonde sa démarche sur l'alignement strict entre vision stratégique et exécution opérationnelle.</p>
-          <p class="dirigeant-bio" contenteditable="false">Expert de la structuration commerciale et du développement de marque, il pilote pour Vastoris Consulting les campagnes d'acquisition B2B, le personal branding des dirigeants et l'optimisation des performances de vente.</p>
+          <!-- ✏️ Nom -->
+          <h3 class="dirigeant-name">Alban SAINT-CLAIR</h3>
+          <!-- ✏️ Titre -->
+          <p class="dirigeant-title">Directeur commercial &amp; stratège B2B</p>
+          <!-- ✏️ Biographie paragraphe 1 -->
+          <p class="dirigeant-bio">Fondateur de Vastoris Consulting, Alban cumule plus de quinze années d'expérience dans la négociation B2B, le marketing digital et la direction d'équipes commerciales. Œuvrant tant dans les secteurs nationaux qu'internationaux, il fonde sa démarche sur l'alignement strict entre vision stratégique et exécution opérationnelle.</p>
+          <!-- ✏️ Biographie paragraphe 2 -->
+          <p class="dirigeant-bio">Expert de la structuration commerciale et du développement de marque, il pilote pour Vastoris Consulting les campagnes d'acquisition B2B, le personal branding des dirigeants et l'optimisation des performances de vente.</p>
+          <!-- ✏️ Compétences : modifiez ou ajoutez des tags -->
           <div class="competences">
-            <span class="tag" contenteditable="false">Direction Commerciale</span>
-            <span class="tag" contenteditable="false">Stratégie B2B</span>
-            <span class="tag" contenteditable="false">Executive Copywriting</span>
-            <span class="tag" contenteditable="false">Négociation Complexes</span>
-            <span class="tag" contenteditable="false">Personal Branding</span>
-          
+            <span class="tag">Direction Commerciale</span>
+            <span class="tag">Stratégie B2B</span>
+            <span class="tag">Executive Copywriting</span>
+            <span class="tag">Négociation Complexe</span>
+            <span class="tag">Personal Branding</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TÉMOIGNAGES -->
+  <!-- ═══════════════════════════════════════════
+       TÉMOIGNAGES
+       ════════════════════════════════════════ -->
   <section id="temoignages">
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Ils nous font confiance</p>
-        <h2 class="section-title" contenteditable="false">Retours d'expérience</h2>
+        <h2 class="section-title">Retours d'expérience</h2>
         <div class="gold-rule"></div>
       </div>
       <div class="temoignages-grid reveal">
+
+        <!-- ✏️ Témoignage 1 -->
         <div class="temoignage">
           <div class="temoignage-stars">★ ★ ★ ★ ★</div>
-          <p class="temoignage-quote" contenteditable="false">« Vastoris Consulting a restructuré notre démarche commerciale B2B. L'impact sur notre taux de conversion et sur le positionnement de notre offre a été immédiat. »</p>
+          <p class="temoignage-quote">« Vastoris Consulting a restructuré notre démarche commerciale B2B. L'impact sur notre taux de conversion et sur le positionnement de notre offre a été immédiat. »</p>
           <div class="temoignage-author">
-            <strong contenteditable="false">Jean François Morain</strong>
-            <span contenteditable="false">Direteur General. Industrie & services B2B</span>
+            <strong>Jean François Morain</strong>
+            <span>Directeur Général · Industrie &amp; services B2B</span>
           </div>
         </div>
+
+        <!-- ✏️ Témoignage 2 -->
         <div class="temoignage">
           <div class="temoignage-stars">★ ★ ★ ★ ★</div>
-          <p class="temoignage-quote" contenteditable="false">« La stratégie de copywriting et le travail de personal branding menés par Alban ont transformé notre visibilité auprès des grands comptes. Un vrai levier d'autorité.»</p>
+          <p class="temoignage-quote">« La stratégie de copywriting et le travail de personal branding menés par Alban ont transformé notre visibilité auprès des grands comptes. Un vrai levier d'autorité. »</p>
           <div class="temoignage-author">
-            <strong contenteditable="false">Aurelie DiMaglio</strong>
-            <span contenteditable="false">Fondatrice. Agence de communication. Bide&Big</span>
+            <strong>Aurelie DiMaglio</strong>
+            <span>Fondatrice · Agence Bide&amp;Big</span>
           </div>
         </div>
+
+        <!-- ✏️ Témoignage 3 -->
         <div class="temoignage">
           <div class="temoignage-stars">★ ★ ★ ★ ★</div>
-          <p class="temoignage-quote" contenteditable="false">« Une approche sur mesure de la négociation et du closing. L'accompagnement stratégique de Vastoris est d'une rigueur irréprochable. »</p>
+          <p class="temoignage-quote">« Une approche sur mesure de la négociation et du closing. L'accompagnement stratégique de Vastoris est d'une rigueur irréprochable. »</p>
           <div class="temoignage-author">
-            <strong contenteditable="false">Marc Lanvain</strong>
-            <span contenteditable="false">CEO. ECO WORLD</span>
+            <strong>Marc Lanvain</strong>
+            <span>CEO · ECO WORLD</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ═══════════════════════════════════════════
+       CONTACT
+       ════════════════════════════════════════ -->
   <section id="contact">
     <div class="section-inner">
       <div class="reveal">
         <p class="section-label">Parlons de votre projet</p>
-        <h2 class="section-title" contenteditable="false">Contactez-nous</h2>
+        <h2 class="section-title">Contactez-nous</h2>
         <div class="gold-rule"></div>
       </div>
       <div class="contact-grid reveal">
+
         <div class="contact-info">
-          <p contenteditable="false">Vous souhaitez accélérer votre développement commercial, affirmer votre posture de dirigeant ou structurer vos campagnes B2B ? Échangeons sur vos enjeux stratégiques.</p>
+          <!-- ✏️ Texte intro contact -->
+          <p>Vous souhaitez accélérer votre développement commercial, affirmer votre posture de dirigeant ou structurer vos campagnes B2B ? Échangeons sur vos enjeux stratégiques.</p>
           <div class="contact-detail">
+            <!-- ✏️ Coordonnées -->
             <div class="contact-detail-item">
               <span class="label">Email</span>
-              <span class="value" contenteditable="false">contact@vastorisconsulting.fr</span>
+              <span class="value">contact@vastorisconsulting.fr</span>
             </div>
             <div class="contact-detail-item">
               <span class="label">Téléphone</span>
-              <span class="value" contenteditable="false">+33 7 51 48 66 90</span>
+              <span class="value">+33 7 51 48 66 90</span>
             </div>
             <div class="contact-detail-item">
               <span class="label">Adresse</span>
-              <span class="value" contenteditable="false">75008 Paris, France</span>
+              <span class="value">75008 Paris, France</span>
             </div>
             <div class="contact-detail-item">
               <span class="label">LinkedIn</span>
-              <span class="value"><a href="https://www.linkedin.com/company/vastoris-consulting" style="color:var(--or)">Vastoris Consulting</a></span>
+              <span class="value">
+                <a href="https://www.linkedin.com/company/vastoris-consulting" style="color:var(--or)">Vastoris Consulting</a>
+              </span>
             </div>
           </div>
         </div>
+
         <form id="contactForm">
+          <!-- Honeypot anti-spam -->
           <input type="text" id="website" name="website" style="display:none" tabindex="-1" autocomplete="off">
           <div class="form-row">
             <div class="form-group">
@@ -753,12 +723,17 @@
           <button type="submit" class="btn-submit">Envoyer le message</button>
           <p class="rgpd-note">* Champs obligatoires. Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données. <a href="#">Politique de confidentialité</a>.</p>
         </form>
+
       </div>
     </div>
   </section>
 
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════ -->
   <footer>
-    <img class="footer-logo" src="LOGO_PLACEHOLDER" alt="Vastoris Consulting">
+    <img class="footer-logo" src="LOGO.jpg" alt="Vastoris Consulting">
+    <!-- ✏️ Nom footer -->
     <p class="footer-name">Vastoris Consulting</p>
     <div class="footer-links">
       <a href="#presentation">Expertise</a>
@@ -766,23 +741,45 @@
       <a href="#temoignages">Témoignages</a>
       <a href="#contact">Contact</a>
     </div>
-    <p class="footer-copy" contenteditable="false">&copy; 2026 Vastoris Consulting – Tous droits réservés.</p>
+    <!-- ✏️ Copyright -->
+    <p class="footer-copy">&copy; 2026 Vastoris Consulting – Tous droits réservés.</p>
   </footer>
 
   <script>
-    // ── LOGO (base64 intégré) ──────────────────────────────
-    const LOGO_B64 = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QiRRXhpZgAASUkqAAgAAAADADEBAgAlAAAAMgAAADsBAgADAAAAYWkAAGmHBAABAAAAVwAAAAAAAABmODE1YmQ1ZS0wNGY4LTRkYWEtODhjMS1kYTZkYTUzNGNkNWEAAQCGkgcAIAgAAGkAAAAAAAAAVU5JQ09ERQAAQwByAGUAYQB0AGUAIABhAG4AIAB1AGwAdAByAGEALQBwAHIAZQBtAGkAdQBtACAAYwBvAHIAcABvAHIAYQB0AGUAIABsAG8AZwBvACAAZgBvAHIAIAB0AGgAZQAgAGIAcgBhAG4AZAAgIBwAVgBBAFMAVABPAFIASQBTIB0ALgAgAEQAZQBzAGkAZwBuACAAYQAgAGwAYQByAGcAZQAsACAAcwB5AG0AbQBlAHQAcgBpAGMAYQBsACwAIABnAGUAbwBtAGUAdAByAGkAYwAgAFYAIABiAHUAaQBsAHQAIAB3AGkAdABoACAAcwBoAGEAcgBwACAAYQBuAGcAbABlAHMAIABhAG4AZAAgAGMAaABlAHYAcgBvAG4ALQBsAGkAawBlACAAdwBpAG4AZwBzACwAIABzAHkAbQBiAG8AbABpAHoAaQBuAGcAIABzAHQAcgBhAHQAZQBnAHkALAAgAGMAbwBuAHEAdQBlAHMAdAAsACAAcABvAHcAZQByACwAIABhAG4AZAAgAGUAbABpAHQAZQAgAGwAZQBhAGQAZQByAHMAaABpAHAALgAgAE4AbwAgAGMAdQByAHYAZQBzACAgFAAgAG8AbgBsAHkAIABjAGwAZQBhAG4ALAAgAHAAcgBlAGMAaQBzAGUAIABsAGkAbgBlAHMALgAgAFMAdAB5AGwAZQA6ACAAbQBpAGwAaQB0AGEAcgBpAHMAdABpAGMALQBsAHUAeAB1AHIAeQAsACAAcwB0AHIAYQB0AGUAZwBpAGMALAAgAGIAbwBsAGQALAAgAGEAdQB0AGgAbwByAGkAdABhAHQAaQB2AGUALgAgAEMAbwBsAG8AcgAgAHAAYQBsAGUAdAB0AGUAOgAgAGQAZQBlAHAAIABiAGwAYQBjAGsAIABiAGEAYwBrAGcAcgBvAHUAbgBkACAAKAAjADAAMAAwADAAMAAwACkALAAgAG0AYQB0AHQAZQAgAGcAbwBsAGQAIABhAGMAYwBlAG4AdABzACAAKAAjAEMAQgBBADMANQBFACkALAAgAGEAbgB0AGgAcgBhAGMAaQB0AGUAIABkAGUAdABhAGkAbABzAC4AIABSAGUAbgBkAGUAcgAgAGEAcwAgAGEAIABoAGkAZwBoAC0AZQBuAGQAIAB2AGUAYwB0AG8AcgAgAG0AYQByAGsAIAB3AGkAdABoACAAcABlAHIAZgBlAGMAdAAgAHMAeQBtAG0AZQB0AHIAeQAsACAAcwB3AHIAbwBuAGcAIAB2AGUAcgB0AGkAYwBhAGwAIABlAG4AZQByAGcAeQAsACAAYQBuAGQAIABtAGkAbgBpAG0AYQBsAGkAcwBtAC4AIABNAG8AZABlAHIAbgAgAHMAYQBuAHMALQBzAGUAcgBpAGYAIAB0AHkAcABvAGcAcgBhAHAAaAB5ACAAKABNAG8AbgB0AHMAZQByAHIAYQB0ACAAbwByACAARwBvAHQAaABhAG0AIABzAHQAeQBsAGUAKQAgAGYAbwByACAAdABoAGUAIAB3AG8AcgBkAG0AYQByAGsAICAcAFYAQQBTAFQATwBSAEkAU0AdACwAIABzAHAAYQBjAGUAZAAgAGEAbgBkACAAdQBwAHAAZQByAGMAYQBzAGUALgAgAFUAbAB0AHIAYQAtAGMAbABlAGEAbgAgAGwAaQBnAGgAdABpAG4AZwAsACAAbgBvACAAMwBEACAAZQB4AGMAZQBzAHMAaQB2AGUAIABnAGwAbwBzAHMALAAgAG4AbwAgAGcAcgBhAGQAaQBlAG4AdABzAC4AIABMAHUAeAB1AHIAeQAgAGIAcgBhAG4AZAAgAGkAZABlAG4AdABpAHQAeQAsACAAQwBFAE8ALQBsAGUAdgBlAGwAIABhAGUAcwB0AGgAZQB0AGkAYwAsACAAbQBlAHQAaQBjAHUAbABvAHUAcwAgAGMAbwBtAHAAbwBzAGkAdABpAG8AbgAuAAoATgBlAGcAYQB0AGkAdgBlACAAcAByAG8AbQBwAHQAOgAgAAoAUwB0AGUAcABzADoAIAA5ACwAIABTAGEAbQBwAGwAZQByADoAIABVAG4AZABlAGYAaQBuAGUAZAAsACAAQwBGAEcAIABzAGMAYQBsAGUAOgAgADEALAAgAFMAZQBlAGQAOgAgADEAMQA1ADIAMgAzADkAMAA1ADMALAAgAFMAaQB6AGUA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';
+    // Active les animations reveal seulement si JS tourne correctement
+    document.documentElement.classList.add('js-ok');
 
-    document.querySelectorAll('img[src="LOGO_PLACEHOLDER"]').forEach(img => {
-      img.src = LOGO_B64;
-    });
+    // Reveal au scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-    // ── FORMULAIRE ─────────────────────────────────────────
+    // Formulaire de contact
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Merci pour votre message. Nous vous recontacterons dans les plus brefs délais.');
-      this.reset();
+      if (document.getElementById('website').value) return;
+      const email = document.getElementById('email').value.trim();
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert('Veuillez saisir une adresse email valide.');
+        return;
+      }
+      const btn = this.querySelector('.btn-submit');
+      btn.textContent = 'Envoi en cours…';
+      btn.disabled = true;
+      setTimeout(() => {
+        alert('Votre message a bien été envoyé ! Nous vous répondrons dans les plus brefs délais.');
+        this.reset();
+        btn.textContent = 'Envoyer le message';
+        btn.disabled = false;
+      }, 1200);
     });
   </script>
+
 </body>
 </html>
