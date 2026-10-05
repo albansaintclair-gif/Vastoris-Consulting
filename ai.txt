@@ -1,0 +1,27 @@
+# AI.txt – Vastoris Consulting
+# https://www.vastorisconsulting.fr/ai.txt
+# Déclaration des préférences d'utilisation du contenu par les systèmes d'IA
+
+# Crawling pour indexation et réponses aux requêtes : AUTORISÉ
+User-agent: GPTBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Utilisation du contenu pour l'entraînement de modèles : NON AUTORISÉE sans accord
+# Contact pour licence d'utilisation : contact@vastorisconsulting.fr
+User-agent: *
+Crawl-delay: 1

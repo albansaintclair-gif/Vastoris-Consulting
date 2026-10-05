@@ -1,0 +1,9 @@
+# Ce fichier doit être déposé dans le dossier .well-known/ de votre site
+# URL finale : https://www.vastorisconsulting.fr/.well-known/security.txt
+
+Contact: mailto:contact@vastorisconsulting.fr
+Contact: tel:+33751486690
+Expires: 2027-09-22T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://www.vastorisconsulting.fr/.well-known/security.txt
+Policy: https://www.vastorisconsulting.fr/#contact
